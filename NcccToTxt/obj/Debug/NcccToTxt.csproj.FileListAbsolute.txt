@@ -1,0 +1,7 @@
+C:\Users\Admin\source\repos\NcccToTxt\NcccToTxt\bin\Debug\NcccToTxt.exe.config
+C:\Users\Admin\source\repos\NcccToTxt\NcccToTxt\bin\Debug\NcccToTxt.exe
+C:\Users\Admin\source\repos\NcccToTxt\NcccToTxt\bin\Debug\NcccToTxt.pdb
+C:\Users\Admin\source\repos\NcccToTxt\NcccToTxt\obj\Debug\NcccToTxt.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\NcccToTxt\NcccToTxt\obj\Debug\NcccToTxt.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\NcccToTxt\NcccToTxt\obj\Debug\NcccToTxt.exe
+C:\Users\Admin\source\repos\NcccToTxt\NcccToTxt\obj\Debug\NcccToTxt.pdb
