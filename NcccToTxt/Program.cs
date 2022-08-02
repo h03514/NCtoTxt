@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace NcccToTxt
 {
@@ -13,67 +14,81 @@ namespace NcccToTxt
         {
             DirectoryInfo di = new DirectoryInfo(@"D:\桌面\新增資料夾 (4)\");
             string path = "";
-            foreach (var file in di.GetFiles("*.txt"))
+            //foreach (var file in di.GetFiles("*.txt"))
+            //{
+            try
             {
-                try
+                foreach (var line in di.GetFiles("*.txt"))
                 {
-                    foreach(string line in System.IO.File.ReadLines(file.FullName))
+                    if (line.Name == "test(1).txt")
                     {
-                        if (file.Name == "test(1).txt")
-                        {
-                            path = @"D:\\桌面\\新增資料夾 (4)\\ddd\\1.txt";
+                        path = @"D:\\桌面\\新增資料夾 (4)\\ddd\\1.txt";
 
-                            // Create the file, or overwrite if the file exists.
-                            using (FileStream fs = File.Create(path))
+                        // Create the file, or overwrite if the file exists.
+                        using (FileStream fs = File.Create(path))
+                        {
+                           
+                            List<string> lists = new List<string>();
+
+                            // Open the stream and read it back.
+                            using (StreamReader sr = File.OpenText(@"D:\桌面\新增資料夾 (4)\"+line.Name))
                             {
-                                // 前三碼
-                                string aa = line.Substring(0, 3);
-
-                                // 機構清算代碼
-                                string ab = line.Substring(4, 7);
-
-                                // 中心處理日 
-                                string ac = line.Substring(11, 8);
-                                List<string> lists = new List<string>();
-
-                               
-                                if (aa.ToUpper() == "OFH")
+                                DataTable dt = new DataTable();
+                                string s = "";
+                                while ((s = sr.ReadLine()) != null)
                                 {
-                                    lists.Add("1"+aa.PadRight(5)+ab.PadRight(2)+ac.PadRight(5));
-                                    //string.Join("-", words);
+                                    string aa = s.Substring(0, 3);
+                                    string bb = s.Substring(3, 7);
+
+                                    if (aa == "0CF")
+                                    {
+                                        dt.Rows.Add(new object[] { "1".PadRight(5) + aa.PadRight(10) + bb });
+                                    }
+
+                                    if (aa == "0CH")
+                                    {
+                                        dt.Rows.Add(new object[] { "2".PadRight(5) + aa.PadRight(10) + bb });
+                                    }
+
+                                    if (aa == "0CE")
+                                    {
+                                        dt.Rows.Add(new object[] { "3".PadRight(5) + aa.PadRight(10) + bb });
+
+                                    }
+                                    Console.WriteLine("1".PadRight(5)+aa.PadRight(10)+bb);
                                 }
-                                byte[] info = new UTF8Encoding(true).GetBytes(lists.ToString());
-                                // Add some information to the file.
-                                fs.Write(info, 0, info.Length);
-                                Console.WriteLine("ad");
                             }
-                          
-                        }
 
 
-                        if (file.Name == "test(2).txt")
-                        {
-                            path = @"D:\\桌面\\新增資料夾 (4)\\ddd\\2.txt";
+                            //if (aa.ToUpper() == "0FH")
+                            //{
+                            //    lists.Add("1" + aa.PadRight(5) + ab.PadRight(2) + ac.PadRight(5));
+                            //    //string.Join("-", words);
+                            //}
+                            //byte[] info = new UTF8Encoding(true).GetBytes(lists.ToString());
+                            //// Add some information to the file.
+                            //fs.Write(info, 0, info.Length);
+                            //Console.WriteLine("ad");
                         }
+
                     }
-          
 
-                    // Open the stream and read it back.
-                    using (StreamReader sr = File.OpenText(path))
+
+                    if (line.Name == "test(2).txt")
                     {
-                        string s = "";
-                        while ((s = sr.ReadLine()) != null)
-                        {
-                            Console.WriteLine(s);
-                        }
+                        path = @"D:\\桌面\\新增資料夾 (4)\\ddd\\2.txt";
                     }
                 }
 
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+
+               
             }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            //}
         }
     }
 }
