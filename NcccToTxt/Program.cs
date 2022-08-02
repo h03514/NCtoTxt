@@ -53,10 +53,11 @@ namespace NcccToTxt
                                     if (aa == "0CE")
                                     {
                                         dt.Rows.Add(new object[] { "3".PadRight(5) + aa.PadRight(10) + bb });
-
                                     }
-                                    Console.WriteLine("1".PadRight(5)+aa.PadRight(10)+bb);
+
+                                    
                                 }
+
                             }
 
 
