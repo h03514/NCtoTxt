@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Data;
+using System.Globalization;
 
 namespace NcccToTxt
 {
@@ -31,7 +32,7 @@ namespace NcccToTxt
                             List<string> lists = new List<string>();
 
                             // Open the stream and read it back.
-                            using (StreamReader sr = File.OpenText(@"D:\桌面\新增資料夾 (4)\"+line.Name))
+                            using (StreamReader sr = File.OpenText(@"D:\桌面\新增資料夾 (4)\" + line.Name))
                             {
                                 DataTable dt = new DataTable();
                                 string s = "";
@@ -42,24 +43,32 @@ namespace NcccToTxt
 
                                     if (aa == "0CF")
                                     {
-                                        dt.Rows.Add(new object[] { "1".PadRight(5) + aa.PadRight(10) + bb });
+                                        //dt.Rows.Add(new object[] { "1".PadRight(5) + aa.PadRight(10) + bb });
                                     }
 
                                     if (aa == "0CH")
                                     {
-                                        dt.Rows.Add(new object[] { "2".PadRight(5) + aa.PadRight(10) + bb });
+                                        //dt.Rows.Add(new object[] { "2".PadRight(5) + aa.PadRight(10) + bb });
                                     }
 
                                     if (aa == "0CE")
                                     {
-                                        dt.Rows.Add(new object[] { "3".PadRight(5) + aa.PadRight(10) + bb });
+                                        //dt.Rows.Add(new object[] { "3".PadRight(5) + aa.PadRight(10) + bb });
                                     }
 
-                                    
-                                }
 
+                                }
                             }
 
+                            System.Globalization.TaiwanCalendar tc = new System.Globalization.TaiwanCalendar();
+
+                            DateTime d = DateTime.Now;
+                            var abc = new DateTime(2012,2,29);
+                            Console.WriteLine(tc.GetYear(abc).ToString());
+                            Console.WriteLine(tc.GetMonth(abc).ToString("00"));
+                            Console.WriteLine(tc.GetDayOfMonth(abc).ToString("00"));
+                            string salesDate = String.Format( tc.GetYear(abc).ToString()+tc.GetMonth(d).ToString("00")+tc.GetDayOfMonth(d).ToString("00"));
+                            //Console.WriteLine(salesDate.ToString());
 
                             //if (aa.ToUpper() == "0FH")
                             //{
