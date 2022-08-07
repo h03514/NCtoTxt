@@ -60,15 +60,15 @@ namespace NcccToTxt
                                 }
                             }
 
-                            System.Globalization.TaiwanCalendar tc = new System.Globalization.TaiwanCalendar();
+                            //System.Globalization.TaiwanCalendar tc = new System.Globalization.TaiwanCalendar();
 
-                            DateTime d = DateTime.Now;
-                            var abc = new DateTime(2012,2,29);
-                            Console.WriteLine(tc.GetYear(abc).ToString());
-                            Console.WriteLine(tc.GetMonth(abc).ToString("00"));
-                            Console.WriteLine(tc.GetDayOfMonth(abc).ToString("00"));
-                            string salesDate = String.Format( tc.GetYear(abc).ToString()+tc.GetMonth(d).ToString("00")+tc.GetDayOfMonth(d).ToString("00"));
-                            //Console.WriteLine(salesDate.ToString());
+                            //DateTime d = DateTime.Now;
+                            //var abc = new DateTime(2012,2,29);
+                            //Console.WriteLine(tc.GetYear(abc).ToString());
+                            //Console.WriteLine(tc.GetMonth(abc).ToString("00"));
+                            //Console.WriteLine(tc.GetDayOfMonth(abc).ToString("00"));
+                            //string salesDate = String.Format( tc.GetYear(abc).ToString()+tc.GetMonth(d).ToString("00")+tc.GetDayOfMonth(d).ToString("00"));
+                            ////Console.WriteLine(salesDate.ToString());
 
                             //if (aa.ToUpper() == "0FH")
                             //{
@@ -80,7 +80,9 @@ namespace NcccToTxt
                             //fs.Write(info, 0, info.Length);
                             //Console.WriteLine("ad");
                         }
-
+                        Console.WriteLine("D:\\桌面\\新增資料夾 (4)\\" + line.ToString());
+                        //File.Move();
+                        FileMove("D:\\桌面\\新增資料夾 (4)\\" + line.ToString(), "D:\\桌面\\新增資料夾 (4)\\done\\" + line.ToString());
                     }
 
 
@@ -99,6 +101,19 @@ namespace NcccToTxt
                 Console.WriteLine(ex.ToString());
             }
             //}
+        }
+
+        public static void FileMove(string source, string dest)
+        {
+            try
+            {
+                File.Move(source, dest);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
         }
     }
 }
